@@ -2,7 +2,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np
 import matplotlib.pyplot as plt
-from .terrain import generate_reference_and_limits
+from uuv_mission.terrain import generate_reference_and_limits
+import pandas as pd
 
 class Submarine:
     def __init__(self):
@@ -39,6 +40,7 @@ class Submarine:
         self.vel_x = 1
         self.vel_y = 0
     
+
 class Trajectory:
     def __init__(self, position: np.ndarray):
         self.position = position  
@@ -76,6 +78,8 @@ class Mission:
     @classmethod
     def from_csv(cls, file_name: str):
         # You are required to implement this method
+        df = pd.read_csv(file_name)
+        print(df)
         pass
 
 
@@ -105,3 +109,5 @@ class ClosedLoop:
     def simulate_with_random_disturbances(self, mission: Mission, variance: float = 0.5) -> Trajectory:
         disturbances = np.random.normal(0, variance, len(mission.reference))
         return self.simulate(mission, disturbances)
+
+Mission.from_csv("data/mission.csv")
