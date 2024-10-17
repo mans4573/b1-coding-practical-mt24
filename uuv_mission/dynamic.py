@@ -78,9 +78,12 @@ class Mission:
     @classmethod
     def from_csv(cls, file_name: str):
         # You are required to implement this method
-        df = pd.read_csv(file_name)
-        print(df)
-        pass
+        reference = pd.read_csv(file_name,usecols=['reference'])
+        cave_height = pd.read_csv(file_name,usecols=['cave_height'])
+        cave_depth = pd.read_csv(file_name,usecols = ['cave_depth'])
+
+        return cls(reference,cave_height,cave_depth)
+        
 
 
 class ClosedLoop:
@@ -110,4 +113,3 @@ class ClosedLoop:
         disturbances = np.random.normal(0, variance, len(mission.reference))
         return self.simulate(mission, disturbances)
 
-Mission.from_csv("data/mission.csv")
