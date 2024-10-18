@@ -76,10 +76,15 @@ class Mission:
 
     @classmethod
     def from_csv(cls, file_name: str):
+
+        # Load data from CSV file
         data = pd.read_csv(file_name)
+
+        # Convert data to numpy arrays
         reference = data['reference'].to_numpy()
         cave_height = data['cave_height'].to_numpy()
         cave_depth = data['cave_depth'].to_numpy()
+        # return to the class
         return cls(reference, cave_height, cave_depth)
       
 
