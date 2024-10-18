@@ -13,5 +13,4 @@ class PIDController:
         return control_action
     
 
-newcontroller = PIDController()
 
