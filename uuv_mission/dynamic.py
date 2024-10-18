@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np
 import matplotlib.pyplot as plt
-from uuv_mission.terrain import generate_reference_and_limits
+from terrain import generate_reference_and_limits
 import pandas as pd
 
 class Submarine:
@@ -113,3 +113,8 @@ class ClosedLoop:
         disturbances = np.random.normal(0, variance, len(mission.reference))
         return self.simulate(mission, disturbances)
 
+mission = Mission
+
+m= mission.from_csv("data/mission.csv")
+
+print(m)
