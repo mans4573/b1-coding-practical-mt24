@@ -117,8 +117,3 @@ class ClosedLoop:
         disturbances = np.random.normal(0, variance, len(mission.reference))
         return self.simulate(mission, disturbances)
 
-mission = Mission
-
-m= mission.from_csv("data/mission.csv")
-
-print(m)
